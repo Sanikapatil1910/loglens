@@ -1,0 +1,72 @@
+=== SAMPLE DATA: synthetic log written for LogLens demos. Not from a real system. ===
+2026-10-22 10:30:00,001 INFO  [main] com.example.Application - Starting application on port 8080
+2026-10-22 10:30:01,120 INFO  [main] com.example.config.DataSourceConfig - Connecting to jdbc:postgresql://localhost:5432/appdb
+2026-10-22 10:30:02,455 DEBUG [main] com.example.config.CacheConfig - Cache warm-up started
+2026-10-22 10:30:03,010 TRACE [main] com.example.config.CacheConfig - Loaded 12 cache regions
+2026-10-22 10:30:05,310 ERROR [http-nio-8080-exec-1] com.example.UserService - Failed to load user requestId=a1b2c3
+java.lang.NullPointerException: Cannot invoke "com.example.User.getName()" because "user" is null
+	at com.example.UserService.getUser(UserService.java:42)
+	at com.example.UserController.show(UserController.java:27)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+2026-10-22 10:30:07,884 INFO  [http-nio-8080-exec-2] com.example.UserController - GET /users/17 completed in 12 ms
+2026-10-22 10:30:09,102 WARN  [http-nio-8080-exec-2] com.example.RateLimiter - Slow response from billing service (2300 ms)
+2026-10-22 10:30:11,540 ERROR [http-nio-8080-exec-3] com.example.UserService - Failed to load user requestId=d4e5f6
+java.lang.NullPointerException: Cannot invoke "com.example.User.getName()" because "user" is null
+	at com.example.UserService.getUser(UserService.java:42)
+	at com.example.UserController.show(UserController.java:27)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+2026-10-22 10:30:15,002 INFO  [http-nio-8080-exec-3] com.example.UserController - GET /users/18 completed in 9 ms
+2026-10-22 10:30:21,777 ERROR [http-nio-8080-exec-1] com.example.UserService - Failed to load user requestId=789abc
+java.lang.NullPointerException: Cannot invoke "com.example.User.getName()" because "user" is null
+	at com.example.UserService.getUser(UserService.java:42)
+	at com.example.UserController.show(UserController.java:27)
+2026-10-22 10:30:30,100 ERROR [http-nio-8080-exec-6] com.example.OrderService - Failed to price order
+java.lang.NullPointerException: Cannot invoke "com.example.Order.getTotal()" because "order" is null
+	at com.example.OrderService.price(OrderService.java:88)
+--- unparseable line without a level ---
+random text emitted by a third-party library
+{"event":"heartbeat","status":"ok"}
+2026-10-22 10:31:02,200 ERROR [pool-2-thread-1] com.example.PaymentClient - Payment gateway unreachable
+java.net.ConnectException: Connection refused: localhost:9090
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at com.example.PaymentClient.charge(PaymentClient.java:61)
+2026-10-22 10:31:45,650 ERROR [http-nio-8080-exec-4] com.example.AuthService - Login failed for user=demo password=demo-not-a-real-secret
+2026-10-22 10:31:52,018 ERROR [pool-2-thread-2] com.example.PaymentClient - Payment gateway unreachable
+java.net.ConnectException: Connection refused: localhost:9090
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at com.example.PaymentClient.charge(PaymentClient.java:61)
+2026-10-22 10:32:15,730 ERROR [http-nio-8080-exec-4] com.example.OrderRepository - Could not save order requestId=777001
+org.springframework.dao.DataAccessResourceFailureException: could not execute statement; nested exception is org.hibernate.exception.JDBCConnectionException
+	at com.example.OrderRepository.save(OrderRepository.java:54)
+	at com.example.OrderService.place(OrderService.java:31)
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:546)
+	at com.example.db.ConnectionHelper.open(ConnectionHelper.java:19)
+	... 12 more
+2026-10-22 10:32:58,310 ERROR [http-nio-8080-exec-2] com.example.OrderRepository - Could not save order requestId=777002
+org.springframework.dao.DataAccessResourceFailureException: could not execute statement; nested exception is org.hibernate.exception.JDBCConnectionException
+	at com.example.OrderRepository.save(OrderRepository.java:54)
+	at com.example.OrderService.place(OrderService.java:31)
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:546)
+	at com.example.db.ConnectionHelper.open(ConnectionHelper.java:19)
+	... 12 more
+2026-10-22 10:33:40,015 ERROR [http-nio-8080-exec-5] com.example.ReportDao - Report query failed
+java.sql.SQLSyntaxErrorException: Table 'appdb.monthly_report' doesn't exist
+	at com.example.ReportDao.run(ReportDao.java:73)
+2026-10-22 10:34:02,500 WARN  [scheduler-1] com.example.CacheCleaner - Retrying after failure
+java.io.IOException: Stream closed
+	at com.example.CacheCleaner.clean(CacheCleaner.java:15)
+2026-10-22 10:34:20,111 INFO  [scheduler-1] com.example.CacheCleaner - Cleanup finished
+2026-10-22 10:34:41,300 ERROR [http-nio-8080-exec-7] com.example.WebhookHandler - Payment webhook rejected for order 20260001 (signature mismatch)
+2026-10-22 10:34:55,420 ERROR [http-nio-8080-exec-8] com.example.WebhookHandler - Payment webhook rejected for order 20260002 (signature mismatch)
+2026-10-22 10:35:10,000 WARN  [http-nio-8080-exec-2] com.example.RateLimiter - Slow response from billing service (3100 ms)
+2026-10-22 10:35:30,990 FATAL [main] com.example.Application - Out of memory, shutting down
+java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3537)
+	at com.example.ReportBuilder.build(ReportBuilder.java:140)
+2026-10-22 10:35:31,100 INFO  [main] com.example.Application - Shutdown complete
